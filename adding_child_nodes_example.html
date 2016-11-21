@@ -1,0 +1,38 @@
+<!--The following example defines a utility elt , 
+which creates an element node and treats the rest of 
+its arguments as children to that node. This function 
+is then used to add a simple attribution to a quote. (Eloquent Javascript, p. 222)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script>
+	window.onload=init;
+	
+	function elt(type) {
+		var node=document.createElement(type);
+		for (var i=1; i< arguments.length; i++) {
+			var child=arguments[i];
+			if (typeof child == "string")
+				child=document.createTextNode(child);
+			node.appendChild(child);
+		}
+		return node;
+	}
+	
+	function init() {
+		document.getElementById("quote").appendChild(
+			elt("footer","--",
+				elt("strong","Karl Popper"),
+				",preface to the second edition of ",
+				elt("em", "The Open Society and Its Enemies"),
+				",1950"));
+	}
+	</script>		
+</head>
+<body>
+	<blockquote id="quote">
+	No book can ever be finished...
+	</blockquote>
+</body>
+</html>
+	
