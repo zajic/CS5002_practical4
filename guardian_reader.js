@@ -17,7 +17,7 @@ function getNewsFromServer() {
 	var APIkey="?api-key=cd76717d-271b-47b9-a69b-c06e83a77405"
 	//something will be here later
 	var query = "";
-	var staticOptions="&tag=us-news/us-elections-2016&show-fields=thumbnail,trailText&show-tags=keyword,type,contributor&page-size=50"
+	var staticOptions="&tag=us-news/us-elections-2016&show-fields=thumbnail,trailText&show-tags=keyword,contributor&page-size=50"
 	
 	var jsonpOpts = "&format=json&callback=callback";
 	var script = document.createElement("script");
