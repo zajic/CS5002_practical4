@@ -1,6 +1,6 @@
 var news={};
 window.onload=init;
-
+//add a comment
 function init() {
 	
 	getNewsFromServer();
