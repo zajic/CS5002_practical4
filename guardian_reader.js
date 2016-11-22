@@ -1,6 +1,6 @@
 var news={};
 window.onload=init;
-//add a comment
+
 function init() {
 	
 	getNewsFromServer();
@@ -14,13 +14,14 @@ function getNewsFromServer() {
 	
 	var baseurl = "https://content.guardianapis.com"
 	var path = "/search"
-	//you need to register to get your API key and always use it as part of the request
 	var APIkey="?api-key=cd76717d-271b-47b9-a69b-c06e83a77405"
-	//this is just an example query
-	var query = "&q=US%20AND%20elections&show-blocks=body&show-fields=thumbnail"
+	//something will be here later
+	var query = "";
+	var staticOptions="&tag=us-news/us-elections-2016&show-fields=thumbnail,trailText&show-tags=keyword,type,contributor&page-size=50"
+	
 	var jsonpOpts = "&format=json&callback=callback";
 	var script = document.createElement("script");
-	script.src = baseurl + path + APIkey + query + jsonpOpts;
+	script.src = baseurl + path + APIkey + query + staticOptions + jsonpOpts;
 	//this shows the URL we are requesting
 	console.log(script.src);
 	document.body.appendChild(script);
@@ -38,7 +39,8 @@ function createTile() {
 	
 			//console.log(news[1].webTitle);
 			var newHeader1=news[0].webTitle;
-			var textBody1=(news[0].blocks.body[0].bodyTextSummary).slice(0,350) + "...";
+			//var textBody1=(news[0].blocks.body[0].bodyTextSummary).slice(0,350) + "...";
+			var textBody1=(news[0].fields.trailText)
 			var thumbImg1=news[0].fields.thumbnail;
 			var link1=news[0].webUrl
 			//console.log(textBody);
@@ -50,7 +52,8 @@ function createTile() {
 			
 			
 			var newHeader2=news[1].webTitle;
-			var textBody2=(news[1].blocks.body[0].bodyTextSummary).slice(0,350) + "...";
+			//var textBody2=(news[1].blocks.body[0].bodyTextSummary).slice(0,350) + "...";
+			var textBody2=(news[1].fields.trailText)
 			var thumbImg2=news[1].fields.thumbnail;
 			var link2=news[1].webUrl
 			//console.log(textBody);
