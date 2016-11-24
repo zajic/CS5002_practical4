@@ -1,35 +1,51 @@
+var news = {};
+var searchWord;
+var advancedFlag = false;
+
 function init() {
-    document.getElementById("search").onclick=searchWordInput();
-    document.getElementById("advancedSearch").onclick=advSearchOption();
-    // still need correction...
-    document.getElementById("search").onclick=advSearchInput();
-  }
-//receiving users' key word inputs
-function searchWordInput(){
-var searchWord=document.getElementById("searchWord");
+    document.getElementById("search").onclick = search;
+    document.getElementById("advancedSearch").onclick = showAdvancedSearch;
+
 }
-//generating the options of advanced search variables
-function advSearchOption(){
-  for(i=1,i<news.length,i++){
-    for(j=1,j<tag.lenghth,i++){
-      if (tag.type=="keyword"）{
-        tag.push(tag[j].webTitle);
-      }
-      if (tag.type=="contributor"){
-        contributor.push(tag[j].webTitle);
-      }
+//receiving users' inputs
+function search() {
+    searchWord = document.getElementById("searchWord").value;
+    //Then show the result on the page.
+    if (advancedFlag) {
+        var tag = document.getElementById("tag").value;
+        var fromDate = document.getElementById("fromDate").value;
+        var toDate = document.getElementById("toDate").value;
+        var mediaType = document.getElementById("mediaTypeChosen").value;
+        var contributor = document.getElementById("contributor").value;
+        var sort = document.getElementById("sortMethod").value;
+
+        // generate url. Check each advanced variable before add them to the 
+        // url. If there is no value or it is default value for selection element, then don't add it to the url.
+        // send request with all advanced variables
+
+    } else {
+        //just send request with searchWord. no advanced values
     }
-    mediaType.push(news[i].type);
-  }
 }
-//receiving uses' advanced search inputs
-function advSearchInput(){
-  var tagChosen=document.getElementById("tagChosen");
-  var fromDate=document.getElementById("fromDate");
-  var toDate=document.getElementById("toDate");
-  var mediaTypeChosen=document.getElementById("mediaTypeChosen");
-  var contributorChosen=document.getElementById("contributorChosen");
-  var sort=document.getElementById("sortMethod");
+
+function showAdvancedSearch() {
+    if (!advancedFlag) {
+        document.getElementById("advancedSearchField").style.display = "";
+        document.getElementById("advancedSearch").value = "Hide Advanced Search";
+        advancedFlag = true;
+    } else {
+        document.getElementById("advancedSearchField").style.display = "none";
+        document.getElementById("advancedSearch").value = "Show Advanced Search";
+        document.getElementById("tag").value = '';
+        document.getElementById("toDate").value = '';
+        document.getElementById("fromDate").value = '';
+        document.getElementById("mediaTypeChosen").value = 'none';
+        document.getElementById("contributor").value = '';
+        document.getElementById("sortMethod").value = 'latestTenFirst';
+        advancedFlag = false;
+    }
+
 }
-}
+
+
 window.onload = init;
