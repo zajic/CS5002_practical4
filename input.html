@@ -9,10 +9,12 @@
   <script src="jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "#fromDate" ).datepicker();
-  } );
-   $( function() {
-    $( "#toDate" ).datepicker();
+    //chrome has its own date picker plugin. So date picker is not necessary for chrome
+    var isChrome = navigator.userAgent.indexOf("Chrome") > -1;
+    if(!isChrome){
+        $( "#fromDate" ).datepicker();
+        $( "#toDate" ).datepicker();
+    }
   } );
   </script>
 
@@ -22,10 +24,6 @@
 <fieldset>
 <ledgend><h2>Key Word Search</h2></ledgend><br />
 <input type="text" id="searchWord" placeholder="e.g. uselection" /><br></br>
-
-
-
-
 <fieldset id="advancedSearchField" style= "display:none;">
 <ledgend><h3>Advanced Search</h3></ledgend><br />
 <form>
@@ -42,15 +40,14 @@
     To Date:<br>
     <input type="date" id="toDate"><br>
     Media type:<br>
-    <select id = "mediaTypeChosen">
+    <select id = "mediaTypeChosen" value="all">
         <option value="none">none</option>
         <option value="article">article</option>
         <option value="liveblog">liveblog</option>
-        <option value="audio">audio</option>
+        <option value="interactive">interactive</option>
         <option value="image">image</option>
         <option value="vedio">vedio</option>
         <option value="all">all</option>
-
     </select><br>
     Contributor:<br>
     <input type="text" id="contributor" placeholder="Input your contributor..."><br>
@@ -59,11 +56,9 @@
     <option value="newest">Newest</option>
     <option value="oldest">Oldest</option>
     <option value="relavance">Relavance</option>
-</select><br>
+</select><br><br>
 </form>
 </fieldset>
-</fieldset>
-
 <input type="submit" id="search" value="Search"><br>
 <input type="submit" id="advancedSearch" value="Show Advanced Search"><br>
 </fieldset>
