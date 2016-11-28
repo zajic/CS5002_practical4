@@ -99,7 +99,6 @@ function getArticles() {
 		//two pages
 		//window.myUserInput = new userInput("","","","","","","article","profile/megan-carpentier","oldest");
 
-<<<<<<< HEAD
 	}
 	//if the function was called by clicking on page number there is no need to get user input, just update the page number and generate new url
 	else {
@@ -118,39 +117,27 @@ function createUrl(/*object*/userInput,/*string*/callback) {
 		var baseurl = "https://content.guardianapis.com/search";
 		var APIkey="?api-key=cd76717d-271b-47b9-a69b-c06e83a77405";
 		var callbackOption="&callback=" + callback
-		var staticOptions="&show-fields=thumbnail,trailText&show-tags=keyword,contributor&page-size=50&format=json"
+		var staticOptions="&show-fields=thumbnail,trailText&show-tags=keyword,contributor&page-size=50&format=json";
+		var userOptions=userInput.generateQuery();
+		}
+	else
+		throw new Error("userInput object must be passed to the function as argument.")
+
 		
-=======
+	return baseurl + APIkey + callbackOption + staticOptions + userOptions;	
+}
 //add the script with jsonp url to the html
 function executeJsonp(/*string*/url) {
 
 	console.log(url);
 	var scriptElement = document.createElement("script");
 	scriptElement.src = url;
-	scriptElement.id = "jsonp";
+	scriptElement.id = "jsonp";createUrl
 	document.head.appendChild(scriptElement);
 	//to see what happens next go to function callback()
 }
 
-//create url for the request: the url consists of static query part that never change and dynamic query generated based on user input
-function createUrl(/*object*/userInput) {
 
-	if (typeof userInput == 'object' && arguments.length>0) {
-		//the basic part of url is the same for every request
-		var baseurl = "https://content.guardianapis.com/search"
-		var APIkey="?api-key=cd76717d-271b-47b9-a69b-c06e83a77405"
-		var staticOptions="&show-fields=thumbnail,trailText&show-tags=keyword,contributor&page-size=50&format=json&callback=callback"
-
->>>>>>> origin/master
-		//generate the dynamic part of the query
-		var userQueryOptions=userInput.generateQuery();
-
-		return baseurl + APIkey + staticOptions + callbackOption + userQueryOptions;
-	}
-	else
-		throw new Error("userInput object must be passed to the function as argument.")
-
-}
 
 //add the script with jsonp url to the html
 function executeJsonp(/*string*/url) {
@@ -164,15 +151,11 @@ function executeJsonp(/*string*/url) {
 }
 
 //callback function used in JSONP request
-<<<<<<< HEAD
+
 function callbackGeneric(/*object*/data) {
 	
 	//cleanup the previous jsonp request and articles
-=======
-function callback(/*object*/data) {
 
-	//cleanup the previous jsonp request
->>>>>>> origin/master
 	cleanupScript();
 	cleanUpArticles();
 	console.log(data);
@@ -189,16 +172,12 @@ function callback(/*object*/data) {
 		//add paging only if the user clicked on "Search" and if the results do not fit on one page
 		if (window.newSearch && news.total > news.pageSize) {
 			addPaging();
-			//getTopTenTags();
+
 			
 		}
 		//add the number of results to the top of the page
 		addNumberOfResults();
 	}
-}
-
-function getTagsCallback() {
-	
 }
 
 //remove all articles from the screen
@@ -218,7 +197,6 @@ function cleanupScript() {
 	scriptElement.parentNode.removeChild(scriptElement);
 }
 
-<<<<<<< HEAD
 //move to next page set (i.e. from 1-10 to 11-20), open the first page of the set
 function incrementPageSet(){
 	//if the user is not on the last page set
@@ -409,61 +387,4 @@ function goToLast(){
 	}
 }
 
-function getTopTenTags() {
-	
-	window.tags=[];
-	
-	for (i=1; i<news.pages; i++) {
-		window.myUserInput.page.value=i;
-		myUrl=createUrl(myUserInput,"getTagsCallback");
-		executeJsonp(myUrl);
-	}
-}
 
-function filterOutTags() {
-	
-	for (article in myNews) {
-			for (tag in myNews[article].tags) {
-				if (myNews[article].tags[tag].type=="keyword" && tags.indexOf(myNews[article].tags[tag].webTitle) == -1)
-				window.tags.push(myNews[article].tags[tag].webTitle);
-=======
-function createTiles() {
-
-			var newHeader1=news[0].webTitle;
-			var textBody1=(news[0].fields.trailText)
-			var thumbImg1=news[0].fields.thumbnail;
-			var link1=news[0].webUrl;
-			var datePub1=news[0].webPublicationDate;
-			for (x in news[0].tags) {
-				if (news[0]["tags"][x]["type"] == "contributor")
-				var contributor1=news[0].tags[x].webTitle;
-			}
-
-			document.getElementById("newsHeading1").innerHTML=newHeader1;
-			document.getElementById("newsBody1").innerHTML=textBody1;
-			document.getElementById("newsThumbnail1").src=thumbImg1;
-			document.getElementById("link1").href=link1;
-			document.getElementById("datePublished1").innerHTML="Published: " + datePub1.slice(0,10) + " " + datePub1.slice(-9,-1);
-			document.getElementById("contributedBy1").innerHTML="By " + contributor1;
-
-
-			var newHeader2=news[1].webTitle;
-			//var textBody2=(news[1].blocks.body[0].bodyTextSummary).slice(0,350) + "...";
-			var textBody2=(news[1].fields.trailText)s
-			var thumbImg2=news[1].fields.thumbnail;
-			var link2=news[1].webUrl;
-			var datePub2=news[1].webPublicationDate;
-				for (x in news[1].tags) {
-				if (news[1]["tags"][x]["type"] == "contributor")
-				var contributor2=news[1].tags[x].webTitle;
->>>>>>> origin/master
-			}
-		}
-}
-
-function getTagsCallback(data) {
-	myNews=data.response.results;
-	filterOutTags();
-	console.log(window.tags);
-	console.log((window.tags).length);
-}
