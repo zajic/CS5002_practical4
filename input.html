@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>usa election search</title>
+  <link rel="stylesheet" href="jquery-ui.css">
+	<script type="text/javascript"src="input.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#fromDate" ).datepicker();
+  } );
+   $( function() {
+    $( "#toDate" ).datepicker();
+  } );
+  </script>
+
+</head>
+
+<body>
+<fieldset>
+<ledgend><h2>Key Word Search</h2></ledgend><br />
+<input type="text" id="searchWord" placeholder="e.g. uselection" /><br></br>
+
+
+
+
+<fieldset id="advancedSearchField" style= "display:none;">
+<ledgend><h3>Advanced Search</h3></ledgend><br />
+<form>
+    Conjunction Word:<br>
+ <select id = "operator" value="and">
+        <option value="and">and</option>
+        <option value="or">or</option>
+        <option value="not">not</option>
+    </select><br>
+    Second Key Word:<br>
+	<input type="text" id="secondSearchWord" placeholder="e.g. republican" /><br>
+   	From Date:<br>
+    <input type="date" id="fromDate"><br>
+    To Date:<br>
+    <input type="date" id="toDate"><br>
+    Media type:<br>
+    <select id = "mediaTypeChosen">
+        <option value="none">none</option>
+        <option value="article">article</option>
+        <option value="liveblog">liveblog</option>
+        <option value="audio">audio</option>
+        <option value="image">image</option>
+        <option value="vedio">vedio</option>
+        <option value="all">all</option>
+
+    </select><br>
+    Contributor:<br>
+    <input type="text" id="contributor" placeholder="Input your contributor..."><br>
+    Sort:<br>
+  <select id="sortMethod" value="newest">
+    <option value="newest">Newest</option>
+    <option value="oldest">Oldest</option>
+    <option value="relavance">Relavance</option>
+</select><br>
+</form>
+</fieldset>
+</fieldset>
+
+<input type="submit" id="search" value="Search"><br>
+<input type="submit" id="advancedSearch" value="Show Advanced Search"><br>
+</fieldset>
+
+
+
+</body>
+</html>

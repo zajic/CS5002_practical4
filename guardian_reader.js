@@ -26,22 +26,22 @@ function userInput(searchKeyword,advancedSearchOperator,advancedSearchKeyword,ta
 		keyword:tag,
 		author:contributor
 	};
-	
+
 	this.fromDate= {
 		query:"&from-date=",
 		value:fromDate
 	};
-	
+
 	this.toDate={
 		query:"&to-date=",
 		value:toDate,
 	};
-	
+
 	this.mediaType={
 		query:"&type=",
 		value:mediaType
 	};
-		
+
 	this.sortedBy={
 		query:"&order-by=",
 		value:sortedBy
@@ -55,7 +55,7 @@ function userInput(searchKeyword,advancedSearchOperator,advancedSearchKeyword,ta
 
 //generate a query from inputs stored in userInput object
 userInput.prototype.generateQuery = function() {
-	
+
 	var urlQuery="";
 	//go through the userInput properties and if a property has a value, add it to the urlQuery (tags and keywords are handled separately)
 	for (prop in this) {
@@ -64,7 +64,7 @@ userInput.prototype.generateQuery = function() {
 				urlQuery=urlQuery + this[prop].query + this[prop].value
 		}
 	}
-	
+
 	//create the "tag" part of the query: by default the tag query only contains the "us-news/us-elections-2016" tag
 	var tags=this.tags.query;
 	//if there are any other tags specified they are added and separated by comma
@@ -99,6 +99,7 @@ function getArticles() {
 		//two pages
 		//window.myUserInput = new userInput("","","","","","","article","profile/megan-carpentier","oldest");
 
+<<<<<<< HEAD
 	}
 	//if the function was called by clicking on page number there is no need to get user input, just update the page number and generate new url
 	else {
@@ -119,6 +120,28 @@ function createUrl(/*object*/userInput,/*string*/callback) {
 		var callbackOption="&callback=" + callback
 		var staticOptions="&show-fields=thumbnail,trailText&show-tags=keyword,contributor&page-size=50&format=json"
 		
+=======
+//add the script with jsonp url to the html
+function executeJsonp(/*string*/url) {
+
+	console.log(url);
+	var scriptElement = document.createElement("script");
+	scriptElement.src = url;
+	scriptElement.id = "jsonp";
+	document.head.appendChild(scriptElement);
+	//to see what happens next go to function callback()
+}
+
+//create url for the request: the url consists of static query part that never change and dynamic query generated based on user input
+function createUrl(/*object*/userInput) {
+
+	if (typeof userInput == 'object' && arguments.length>0) {
+		//the basic part of url is the same for every request
+		var baseurl = "https://content.guardianapis.com/search"
+		var APIkey="?api-key=cd76717d-271b-47b9-a69b-c06e83a77405"
+		var staticOptions="&show-fields=thumbnail,trailText&show-tags=keyword,contributor&page-size=50&format=json&callback=callback"
+
+>>>>>>> origin/master
 		//generate the dynamic part of the query
 		var userQueryOptions=userInput.generateQuery();
 
@@ -141,9 +164,15 @@ function executeJsonp(/*string*/url) {
 }
 
 //callback function used in JSONP request
+<<<<<<< HEAD
 function callbackGeneric(/*object*/data) {
 	
 	//cleanup the previous jsonp request and articles
+=======
+function callback(/*object*/data) {
+
+	//cleanup the previous jsonp request
+>>>>>>> origin/master
 	cleanupScript();
 	cleanUpArticles();
 	console.log(data);
@@ -184,11 +213,12 @@ function cleanUpArticles() {
 
 //removes previous jsonp requests
 function cleanupScript() {
-	
+
 	var scriptElement = document.getElementById("jsonp");
 	scriptElement.parentNode.removeChild(scriptElement);
 }
 
+<<<<<<< HEAD
 //move to next page set (i.e. from 1-10 to 11-20), open the first page of the set
 function incrementPageSet(){
 	//if the user is not on the last page set
@@ -396,6 +426,37 @@ function filterOutTags() {
 			for (tag in myNews[article].tags) {
 				if (myNews[article].tags[tag].type=="keyword" && tags.indexOf(myNews[article].tags[tag].webTitle) == -1)
 				window.tags.push(myNews[article].tags[tag].webTitle);
+=======
+function createTiles() {
+
+			var newHeader1=news[0].webTitle;
+			var textBody1=(news[0].fields.trailText)
+			var thumbImg1=news[0].fields.thumbnail;
+			var link1=news[0].webUrl;
+			var datePub1=news[0].webPublicationDate;
+			for (x in news[0].tags) {
+				if (news[0]["tags"][x]["type"] == "contributor")
+				var contributor1=news[0].tags[x].webTitle;
+			}
+
+			document.getElementById("newsHeading1").innerHTML=newHeader1;
+			document.getElementById("newsBody1").innerHTML=textBody1;
+			document.getElementById("newsThumbnail1").src=thumbImg1;
+			document.getElementById("link1").href=link1;
+			document.getElementById("datePublished1").innerHTML="Published: " + datePub1.slice(0,10) + " " + datePub1.slice(-9,-1);
+			document.getElementById("contributedBy1").innerHTML="By " + contributor1;
+
+
+			var newHeader2=news[1].webTitle;
+			//var textBody2=(news[1].blocks.body[0].bodyTextSummary).slice(0,350) + "...";
+			var textBody2=(news[1].fields.trailText)s
+			var thumbImg2=news[1].fields.thumbnail;
+			var link2=news[1].webUrl;
+			var datePub2=news[1].webPublicationDate;
+				for (x in news[1].tags) {
+				if (news[1]["tags"][x]["type"] == "contributor")
+				var contributor2=news[1].tags[x].webTitle;
+>>>>>>> origin/master
 			}
 		}
 }
@@ -406,4 +467,3 @@ function getTagsCallback(data) {
 	console.log(window.tags);
 	console.log((window.tags).length);
 }
-
