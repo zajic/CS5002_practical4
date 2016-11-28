@@ -9,10 +9,12 @@
   <script src="jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "#fromDate" ).datepicker();
-  } );
-   $( function() {
-    $( "#toDate" ).datepicker();
+    //chrome has its own date picker plugin. So date picker is not necessary for chrome
+    var isChrome = navigator.userAgent.indexOf("Chrome") > -1;
+    if(!isChrome){
+        $( "#fromDate" ).datepicker();
+        $( "#toDate" ).datepicker();
+    }
   } );
   </script>
 
@@ -22,18 +24,14 @@
 <fieldset>
 <ledgend><h2>Key Word Search</h2></ledgend><br />
 <input type="text" id="searchWord" placeholder="e.g. uselection" /><br></br>
-
-
-
-
 <fieldset id="advancedSearchField" style= "display:none;">
 <ledgend><h3>Advanced Search</h3></ledgend><br />
 <form>
-    Conjunction Word:<br>
- <select id = "operator" value="and">
-        <option value="and">and</option>
-        <option value="or">or</option>
-        <option value="not">not</option>
+    Operator:<br>
+ <select id = "operator" value="And">
+        <option value="And">AND</option>
+        <option value="Or">OR</option>
+        <option value="Not">NOT</option>
     </select><br>
     Second Key Word:<br>
 	<input type="text" id="secondSearchWord" placeholder="e.g. republican" /><br>
@@ -42,15 +40,13 @@
     To Date:<br>
     <input type="date" id="toDate"><br>
     Media type:<br>
-    <select id = "mediaTypeChosen">
-        <option value="none">none</option>
-        <option value="article">article</option>
-        <option value="liveblog">liveblog</option>
-        <option value="audio">audio</option>
-        <option value="image">image</option>
-        <option value="vedio">vedio</option>
-        <option value="all">all</option>
-
+    <select id = "mediaTypeChosen" value="all">
+        <option value="article">Article</option>
+        <option value="liveblog">Liveblog</option>
+        <option value="interactive">Interactive</option>
+        <option value="image">Image</option>
+        <option value="video">Video</option>
+        <option value="all">All</option>
     </select><br>
     Contributor:<br>
     <input type="text" id="contributor" placeholder="Input your contributor..."><br>
@@ -59,11 +55,9 @@
     <option value="newest">Newest</option>
     <option value="oldest">Oldest</option>
     <option value="relavance">Relavance</option>
-</select><br>
+</select><br><br>
 </form>
 </fieldset>
-</fieldset>
-
 <input type="submit" id="search" value="Search"><br>
 <input type="submit" id="advancedSearch" value="Show Advanced Search"><br>
 </fieldset>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Guardian News Viewer</title>
+
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="jquery-ui.js"></script>
+  <script src="guardian_solution_roger.js"></script>
+  <script src="guardian_reader.js"></script>
+  <script>
+  $( function() {
+    //chrome has its own date picker plugin. So date picker is not necessary for chrome
+    var isChrome = navigator.userAgent.indexOf("Chrome") > -1;
+    if(!isChrome){
+        $( "#fromDate" ).datepicker();
+        $( "#toDate" ).datepicker();
+    }
+  } );
+  </script>
+
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom2.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+
+
+</head>
+<body>
+	<div id="header"></div>
+	<div id="userInput">
+		<fieldset>
+		<ledgend><h2>Key Word Search</h2></ledgend><br />
+		<input type="text" id="searchWord" placeholder="e.g. Donald Trump" /><br></br>
+		<fieldset id="advancedSearchField" style= "display:none;">
+		<ledgend><h3>Advanced Search</h3></ledgend><br />
+		<form>
+		    Operator:<br>
+		 <select id = "operator" value="And">
+			<option value="AND">AND</option>
+			<option value="OR">OR</option>
+			<option value="NOT">NOT</option>
+		    </select><br>
+		    Second Key Word:<br>
+			<input type="text" id="secondSearchWord" placeholder="e.g. republican" /><br>
+		   	From Date:<br>
+		    <input type="date" id="fromDate"><br>
+		    To Date:<br>
+		    <input type="date" id="toDate"><br>
+		    Media type:<br>
+		    <select id = "mediaTypeChosen" value="all">
+			<option value="article">Article</option>
+			<option value="liveblog">Liveblog</option>
+			<option value="interactive">Interactive</option>
+			<option value="image">Image</option>
+			<option value="video">Video</option>
+			<option value="all">All</option>
+		    </select><br>
+		    Contributor:<br>
+		    <input type="text" id="contributor" placeholder="Input your contributor..."><br>
+		    Sort:<br>
+		  <select id="sortMethod" value="newest">
+		    <option value="newest">Newest</option>
+		    <option value="oldest">Oldest</option>
+		    <option value="relevance">Relevance</option>
+		</select><br><br>
+		</form>
+		</fieldset>
+		<input type="submit" id="search" value="Search"><br>
+		<input type="submit" id="advancedSearch" value="Show Advanced Search"><br>
+		</fieldset>
+	</div>
+	<!--button id="searchButton">Search</button-->
+	<div id="pagingTop" class="container hidden">
+
+		<button id="buttonFirstPageSet" class="hidden">«</button>
+		<button id="buttonPrevious" class="hidden">prev</button>
+		<div id="pages" class="inline"></div>
+		<button id="buttonNext" class="hidden">next</button>
+		<button id="buttonLastPageSet" class="hidden">»</button>
+		<p id="numberOfResults"></p>
+
+	</div>
+	<div id="content" class="container hidden"></div>
+</body>
+</html>
