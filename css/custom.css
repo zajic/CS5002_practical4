@@ -1,0 +1,176 @@
+body {
+	background-image: url('../images/stars-and-stripes-6.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+/*
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #333;
+*/
+}
+
+#myList {
+	color: white;	
+}
+
+form {
+	padding:2rem;
+	text-align:center;
+	/*background-color:rgba(229,231,234,0.99); */
+}
+
+h2 {
+	font-size: 125%;
+}
+
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+ 
+  color: white;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #CE2B37;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; }
+  
+input[type="submit"]:hover {
+	background-color: white;	  
+	color: #555;
+}
+
+/*
+button[type=submit]{
+  background-color: #CE2B37;
+  color: white;
+}
+
+input type="text" {
+  background-color: #CE2B37;
+  color: white;
+}
+*/
+
+a h2, p{
+	text-decoration:none;
+}
+
+h2 {
+	color:rgb(31, 66, 122);
+	font-weight:bold;
+	border-bottom: 1px solid;
+	border-color:gray;
+}
+
+.newsArticle {
+	margin:1rem 1rem;
+	padding:1rem;
+	background-color:rgba(229,231,234,0.99);
+	outline:none;
+	border:solid 1px;
+	color: black;
+}
+
+.newsArticle:hover {
+	background-color:rgba(191, 196, 204,0.99);
+}
+
+/*.alignCenter {
+    text-align:center;
+}*/
+
+.newsText{
+    clear:none;
+}
+
+.thumbnail {
+	width:60%;
+	float:right;
+	margin:0.5rem;
+}
+
+	.header {
+	font-size: 200%;
+	}
+
+	h2 {
+	font-size: 200%;
+	}
+		
+}
+	
+.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+	text-align:center;
+}
+
+.pagination.button{
+	padding:2px;
+}
+
+
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+
+	.header {
+	font-size: 150%;
+	}
+
+	h2 {
+	font-size: 150%;
+	}
+	
+	/*
+	#link1 {
+		display: none;
+	}
+	
+	#link2 {
+		display: none;
+	}
+	*/
+}
+
+/* Larger than phablet */
+@media (min-width: 750px) {
+
+	.header {
+	font-size: 200%;
+	}
+
+	h2 {
+	font-size: 200%;
+	}
+		
+}
+	
+
+	
+	
+
+
+/*
+References:
+stars-and-stripes-3.jpg - All American Hats (http://www.allamericanhats.com/stars-and-stripes-do-rag-biker-motorcycle-headgear-bandanna-skullcap.html)
+stars-and-stripes-6.jpg - Silver Spiral Studio (http://www.silverspiralstudio.com/free-patriotic-digital-paper-pack/)
+stars-and-stripes-7.jpg - Jrob15 (http://jrob15.free.fr/ipad/simple/set5/Stars%20and%20Stripes.html)
+*/
+

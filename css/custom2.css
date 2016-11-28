@@ -1,0 +1,255 @@
+
+body {
+	background-image: url('../images/stars-and-stripes-6.jpg');
+    background-repeat: repeat; 
+    position: static; /* User can zoom content without impacting ground */
+    background-size: 100%; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+
+
+.container {
+	border: 1pt solid black; 
+	width: 960px; 
+	background-color: #CE2B37;
+}
+
+#tab1 {
+	display:block;
+	margin:0 auto;
+}
+
+.thumbnail {
+	width:98%;
+	height: auto;
+	display:block;
+	margin:0 auto;
+	
+}
+
+.story {
+	border: 1pt 
+	solid grey; 
+	/*clear: both;*/
+	margin: 3px;
+	padding: 10px;
+	background-color: white;
+	width:211px; /*auto !important;  width: 25%; 210px;*/
+	float: left;
+	height: 260px;
+	overflow:hidden;
+	
+}
+
+.headline {
+	font-size: 10pt; 
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+	display:inline-block;
+	line-height:100%;
+	margin-top:2px;
+}
+
+.author {
+	color: #464647;
+	font-size: 8pt; 
+	font-weight: bold;
+	
+	margin-right: 5px;
+
+}
+
+.date {
+	color: #464647;
+	font-size: 8pt; 
+	font-weight: bold;
+	
+
+}
+
+.summary {
+	font-size: 8pt; 
+	
+}
+
+/*
+a {
+	color: black;
+	line-height: 200%;
+	font-size: 8pt; 
+	font-style: italic;
+}
+
+.hyperlink {
+	font-size: 8pt; 
+	font-style: italic;
+}
+*/
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: white;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #CE2B37;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; 
+  width: ;
+}
+  
+input[type="submit"]:hover {
+	background-color: white;	  
+	color: #555;
+}
+
+/*
+.activeTabButton {font-family: Arial, Helvetica, sans-serif; font-size: 18pt; font-weight: bold;}
+.inactiveTabButton {font-family: Arial, Helvetica, sans-serif; font-size: 18pt;}
+*/
+
+/*
+.clear {
+	clear: both;
+}
+  
+
+form {
+	padding:2rem;
+	text-align:center;
+	/*background-color:rgba(229,231,234,0.99); 
+}
+
+
+h2 {
+	font-size: 125%;
+}
+*/
+
+
+
+/*
+button[type=submit]{
+  background-color: #CE2B37;
+  color: white;
+}
+
+input type="text" {
+  background-color: #CE2B37;
+  color: white;
+}
+
+
+a h2, p{
+	text-decoration:none;
+}
+
+
+h2 {
+	color:rgb(31, 66, 122);
+	font-weight:bold;
+	border-bottom: 1px solid;
+	border-color:gray;
+}
+*/
+
+
+
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+
+	.header {
+	font-size: 150%;
+	}
+
+	h2 {
+	font-size: 150%;
+	}
+	
+	/*
+	#link1 {
+		display: none;
+	}
+	
+	#link2 {
+		display: none;
+	}
+	*/
+}
+
+/* Larger than phablet */
+@media (min-width: 750px) {
+
+	.header {
+	font-size: 200%;
+	}
+
+	h2 {
+	font-size: 200%;
+	}
+		
+}
+
+#pagingTop {
+		text-align:center;
+		padding-top:10pt;
+}
+
+#pagingTop button {
+	padding-left:8pt;
+	padding-right:8pt;
+	line-height:100%;
+	height:2rem;
+	text-align:center;
+}
+
+.hidden {
+		display:none;
+}
+
+.inline {
+	display:inline-block;
+}
+
+#numberOfResults {
+
+	font-size:10pt;
+	text-align:center;
+	font-weight:bold;
+}
+
+.image-unavailable {
+	
+		max-height:50%;
+		display:block;
+		margin:0 auto;
+}
+
+#pagingTop {
+	background-color:rgba(255,255,255,0.8);
+}
+/*
+References:
+stars-and-stripes-3.jpg - All American Hats (http://www.allamericanhats.com/stars-and-stripes-do-rag-biker-motorcycle-headgear-bandanna-skullcap.html)
+stars-and-stripes-6.jpg - Silver Spiral Studio (http://www.silverspiralstudio.com/free-patriotic-digital-paper-pack/)
+stars-and-stripes-7.jpg - Jrob15 (http://jrob15.free.fr/ipad/simple/set5/Stars%20and%20Stripes.html)
+*/
+
+
