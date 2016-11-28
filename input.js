@@ -42,7 +42,7 @@ function search() {
         var mediaType = document.getElementById("mediaTypeChosen").value;
         var contributor = document.getElementById("contributor").value;
         var sortBy = document.getElementById("sortMethod").value;
-        
+
         if (secondSearchWord != ""){
             //add operator and secondSearchWord to the url
         }
