@@ -75,6 +75,13 @@ function renderTitle(div, story) {
 	//titleDiv.innerHTML = story.webTitle.slice(0,40) + "..."; 
 	titleDiv.innerHTML = story.webTitle
 	div.appendChild(titleDiv);
+	/////////////////////////////////////////////////////
+	titleDiv.addEventListener("click",function() {localStorage.setItem(titleDiv.innerHTML,titleDiv.href)});
+}
+
+//stores the article headline and link to local storage
+function storeArticle() {
+	localStorage.setItem(1,"newArticle");
 }
 
 // Render author

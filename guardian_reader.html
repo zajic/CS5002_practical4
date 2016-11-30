@@ -10,6 +10,7 @@
   <script src="jquery-ui.js"></script>
   <script src="guardian_solution_roger.js"></script>
   <script src="guardian_reader.js"></script>
+  <script src="jquery.modal.js" type="text/javascript" charset="utf-8"></script>
   <script>
   $( function() {
     //chrome has its own date picker plugin. So date picker is not necessary for chrome
@@ -26,17 +27,27 @@
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/custom2.css">
   <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/jquery.modal.css">
 
 
 </head>
 <body>
 	<div id="header"></div>
+	<div id="readingListPopUp" style="display:none;">
+		<div id="readingListHeader">
+		<h3>saved articles</h3></div>
+		<div id="readingListItems"></div>
+		<button id="clearReadingList">Clear</button>
+  </div>
+
+  <!-- Link to open the modal -->
+  <p id="readingList"><a href="#readingListPopUp" rel="modal:open">My reading list</a></p>
 	<div id="userInput">
 		<fieldset>
-		<ledgend><h2>Key Word Search</h2></ledgend><br />
+		<legend><h2>Key Word Search</h2></legend><br />
 		<input type="text" id="searchWord" placeholder="e.g. Donald Trump" /><br></br>
 		<fieldset id="advancedSearchField" style= "display:none;">
-		<ledgend><h3>Advanced Search</h3></ledgend><br />
+		<legend><h3>Advanced Search</h3></legend><br />
 		<form>
 		    Operator:<br>
 		 <select id = "operator" value="And">
@@ -67,6 +78,16 @@
 		    <option value="oldest">Oldest</option>
 		    <option value="relevance">Relevance</option>
 		</select><br><br>
+			<label class="tagCheckBox"><input type="checkbox" name="tag" value="us-news/donaldtrump">Donald Trump</label>
+			<label class="tagCheckBox"><input type="checkbox" name="tag" value="us-news/republicans">Republicans</label>
+			<label class="tagCheckBox"><input type="checkbox" name="tag" value="us-news/hillary-clinton">Hillary Clinton</label>
+			<label class="tagCheckBox"><input type="checkbox" name="tag" value="us-news/democrats">Democrats</label>
+			<label class="tagCheckBox"><input type="checkbox" name="tag" value="us-news/bernie-sanders">Bernie Sanders</label>
+			<label class="tagCheckBox"><input type="checkbox" name="tag" value="us-news/ted-cruz">Ted Cruz</label>
+			<label class="tagCheckBox"><input type="checkbox" name="tag" value="us-news/marco-rubio">Marco Rubio</label>
+			<label class="tagCheckBox"><input type="checkbox" name="tag" value="us-news/jeb-bush">Jeb Bush</label>
+			<label class="tagCheckBox"><input type="checkbox" name="tag" value="us-news/barack-obama">Barack Obama</label>
+			<label class="tagCheckBox"><input type="checkbox" name="tag" value="us-news/ben-carson">Ben Carson</label>
 		</form>
 		</fieldset>
 		<input type="submit" id="search" value="Search"><br>
@@ -85,5 +106,7 @@
 
 	</div>
 	<div id="content" class="container hidden"></div>
+	<div id="backToTop" class="container hidden"><a href="#pagingTop">Back to top &rarr;</a></div>
+
 </body>
 </html>
